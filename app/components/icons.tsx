@@ -68,3 +68,49 @@ export const YouTubeIcon = () => (
     <path d="M23 7.5a3 3 0 0 0-2.1-2.12C19 5 12 5 12 5s-7 0-8.9.38A3 3 0 0 0 1 7.5 31.3 31.3 0 0 0 .6 12 31.3 31.3 0 0 0 1 16.5a3 3 0 0 0 2.1 2.12C5 19 12 19 12 19s7 0 8.9-.38A3 3 0 0 0 23 16.5a31.3 31.3 0 0 0 .4-4.5 31.3 31.3 0 0 0-.4-4.5zM9.75 15.3V8.7L15.5 12l-5.75 3.3z" />
   </svg>
 );
+
+/* ---------- course detail icons ---------- */
+const stroke = {
+  fill: "none",
+  stroke: "currentColor",
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
+
+export const BackArrow = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" strokeWidth="2.4" {...stroke}>
+    <path d="M19 12H5M11 18l-6-6 6-6" />
+  </svg>
+);
+
+export const Chevron = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" strokeWidth="2.4" {...stroke}>
+    <path d="M6 9l6 6 6-6" />
+  </svg>
+);
+
+export const MetaBook = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" {...stroke}>
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+  </svg>
+);
+
+export const MetaPlay = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" {...stroke}>
+    <polygon points="5 3 19 12 5 21 5 3" />
+  </svg>
+);
+
+export const MetaClock = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" {...stroke}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 6v6l4 2" />
+  </svg>
+);
+
+export const MetaCheck = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" strokeWidth="2" {...stroke}>
+    <path d="M20 6 9 17l-5-5" />
+  </svg>
+);

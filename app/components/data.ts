@@ -20,6 +20,7 @@ export type Plan = {
   name: string;
   price: string;
   featured: boolean;
+  href: string;
   badge?: string;
   feats: string[];
 };
@@ -29,6 +30,7 @@ export const PLANS: Plan[] = [
     name: "Khóa Premium",
     price: "5.890.000",
     featured: false,
+    href: "/course/premium",
     feats: [
       "Toàn bộ kỹ năng talking head nâng cao (Devin Jatho & Apple Style)",
       "Toàn bộ quy trình tìm & làm việc với khách hàng quốc tế",
@@ -42,6 +44,7 @@ export const PLANS: Plan[] = [
     name: "Khóa Premium Elite",
     price: "10.890.000",
     featured: true,
+    href: "/course/premium-elite",
     badge: "Giới hạn mỗi tháng",
     feats: [
       "Sở hữu toàn bộ khóa Premium",

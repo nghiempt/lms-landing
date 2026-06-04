@@ -272,7 +272,7 @@ function Pricing() {
                   </div>
                 ))}
               </div>
-              <a className="btn btn-primary" href="#">
+              <a className="btn btn-primary" href={p.href}>
                 Tham gia khóa học
                 <span className="arrow">
                   <ArrowR />
