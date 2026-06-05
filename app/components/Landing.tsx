@@ -128,7 +128,7 @@ function Showreel() {
         <Marquee
           className="vreel"
           trackClassName="vreel-track"
-          speed={30}
+          speed={45}
           renderCopy={(c) =>
             VREEL.map((src, i) => (
               <div className="vreel-card" key={i} aria-hidden={c > 0 || undefined}>
@@ -316,7 +316,7 @@ function Feedback() {
         <Marquee
           className="fb-grid"
           trackClassName="fb-track"
-          speed={48}
+          speed={72}
           renderCopy={(c) =>
             FEEDBACK.map((f, i) => (
               <div className="fb-card" key={i} aria-hidden={c > 0 || undefined}>

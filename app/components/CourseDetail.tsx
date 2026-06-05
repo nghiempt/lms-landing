@@ -57,7 +57,7 @@ function Header() {
           <BackArrow />
           <span>Về trang chủ</span>
         </Link>
-        <a className="btn btn-primary" href="#">
+        <a target="_blank" className="btn btn-primary" href="https://lms-dashboard.niandemo.site/login">
           Đăng ký học
         </a>
       </div>
@@ -97,7 +97,7 @@ function Hero({ course }: { course: Course }) {
               <span className="amt">{course.price}</span>
               <span className="cur">VNĐ</span>
             </div>
-            <a className="btn btn-primary" href="#">
+            <a target="_blank" className="btn btn-primary" href="https://lms-dashboard.niandemo.site/login">
               Tham gia khóa học <span className="arrow">
                   <ArrowR />
                 </span>
@@ -133,45 +133,49 @@ function Chapters({ course }: { course: Course }) {
         <div className="chap-grid">
           {course.chapters.map((c, i) => {
             const isOpen = open.has(i);
+            // reveal lives on a stable wrapper so toggling `open` on the inner
+            // .chap doesn't make React strip the imperatively-added `.in` class
             return (
-              <div className={"chap reveal" + (isOpen ? " open" : "")} key={c.no}>
-                <button
-                  className="chap-head"
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => toggle(i)}
-                >
-                  <div className="chap-cover">
-                    <span className="chap-no">{c.no}</span>
-                    <span className="chap-cover-label">{c.label}</span>
-                  </div>
-                  <div className="chap-body">
-                    <div className="chap-name">{c.name}</div>
-                    <p className="chap-desc">{c.desc}</p>
-                    <div className="chap-foot">
-                      <div className="chap-bar">
-                        <i style={{ width: "0%" }}></i>
+              <div className="reveal" key={c.no}>
+                <div className={"chap" + (isOpen ? " open" : "")}>
+                  <button
+                    className="chap-head"
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => toggle(i)}
+                  >
+                    <div className="chap-cover">
+                      <span className="chap-no">{c.no}</span>
+                      <span className="chap-cover-label">{c.label}</span>
+                    </div>
+                    <div className="chap-body">
+                      <div className="chap-name">{c.name}</div>
+                      <p className="chap-desc">{c.desc}</p>
+                      <div className="chap-foot">
+                        <div className="chap-bar">
+                          <i style={{ width: "0%" }}></i>
+                        </div>
+                        <span className="chap-pct">0%</span>
                       </div>
-                      <span className="chap-pct">0%</span>
+                      <div className="chap-meta">
+                        <span>{c.count}</span>
+                        <span className="chap-toggle">
+                          Xem bài học <Chevron />
+                        </span>
+                      </div>
                     </div>
-                    <div className="chap-meta">
-                      <span>{c.count}</span>
-                      <span className="chap-toggle">
-                        Xem bài học <Chevron />
-                      </span>
-                    </div>
+                  </button>
+                  <div className="chap-lessons">
+                    <ul>
+                      {c.lessons.map((l) => (
+                        <li className="les" key={l.no}>
+                          <span className="les-no">{l.no}</span>
+                          <span className="les-title">{l.title}</span>
+                          <span className="les-dur">{l.dur}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </button>
-                <div className="chap-lessons">
-                  <ul>
-                    {c.lessons.map((l) => (
-                      <li className="les" key={l.no}>
-                        <span className="les-no">{l.no}</span>
-                        <span className="les-title">{l.title}</span>
-                        <span className="les-dur">{l.dur}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             );
@@ -195,7 +199,7 @@ function Feedback() {
       <Marquee
         className="fb-grid"
         trackClassName="fb-track"
-        speed={48}
+        speed={72}
         renderCopy={(c) =>
           FEEDBACK.map((f, i) => (
             <div className="fb-card" key={i} aria-hidden={c > 0 || undefined}>
