@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import CourseDetail from "../../components/CourseDetail";
 import { getCourseDetail, getCourseSlugs } from "../../components/landingApi";
 
-// ISR — nội dung khoá tự cập nhật từ API mỗi 60s khi admin chỉnh sửa.
-export const revalidate = 60;
+// Render động: luôn fetch nội dung khoá mới nhất từ API khi admin chỉnh sửa.
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   const slugs = await getCourseSlugs();

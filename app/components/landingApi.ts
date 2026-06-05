@@ -9,9 +9,6 @@ import { PLANS, type Plan } from "./data";
 const API_BASE =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api/v1";
 
-// Bao lâu (giây) thì Next revalidate lại nội dung từ API.
-export const LANDING_REVALIDATE = 60;
-
 interface Envelope<T> {
   success: boolean;
   data: T;
@@ -27,9 +24,8 @@ type ApiCourse = CourseDetail & {
 
 async function fetchLanding<T>(path: string): Promise<T | null> {
   try {
-    const res = await fetch(`${API_BASE}${path}`, {
-      next: { revalidate: LANDING_REVALIDATE },
-    });
+    // no-store: luôn lấy data mới nhất từ API (admin sửa xong reload thấy ngay).
+    const res = await fetch(`${API_BASE}${path}`, { cache: "no-store" });
     if (!res.ok) return null;
     const json = (await res.json()) as Envelope<T> | null;
     return json?.success ? json.data : null;
