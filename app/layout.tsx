@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -38,7 +39,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="vi" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          src="https://feedback.tino.vn/feedback-widget.js"
+          data-api-key="ede9009d-df6a-4d5b-af73-84478ff3c4cb"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
