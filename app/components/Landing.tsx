@@ -11,6 +11,7 @@ import {
   LOGO,
   COMMUNITY_IMG,
   PROBLEM_IMG,
+  type Plan,
 } from "./data";
 import { Tick, ArrowR, Stars, CommIcon, TikTokIcon, YouTubeIcon } from "./icons";
 import { Marquee } from "./Marquee";
@@ -248,7 +249,7 @@ function Outcome() {
 }
 
 /* ---------- S6 — PRICING ---------- */
-function Pricing() {
+function Pricing({ plans }: { plans: Plan[] }) {
   return (
     <section className="section" id="pricing">
       <div className="wrap">
@@ -257,7 +258,7 @@ function Pricing() {
           <h2 className="section-title">Chọn lộ trình phù hợp với bạn</h2>
         </div>
         <div className="pricing-grid">
-          {PLANS.map((p, i) => (
+          {plans.map((p, i) => (
             <div
               className={"plan reveal" + (p.featured ? " featured" : "")}
               key={i}
@@ -477,7 +478,7 @@ function Footer() {
   );
 }
 
-export default function Landing() {
+export default function Landing({ plans = PLANS }: { plans?: Plan[] }) {
   useReveal();
   return (
     <>
@@ -492,7 +493,7 @@ export default function Landing() {
         <Problem />
         <Course />
         <Outcome />
-        <Pricing />
+        <Pricing plans={plans} />
         <Feedback />
         <Faq />
         <Community />
