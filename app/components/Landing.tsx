@@ -13,6 +13,7 @@ import {
   PROBLEM_IMG,
 } from "./data";
 import { Tick, ArrowR, Stars, CommIcon, TikTokIcon, YouTubeIcon } from "./icons";
+import { Marquee } from "./Marquee";
 
 /* helper: allow CSS custom properties in inline styles */
 const v = (style: Record<string, string | number>) => style as CSSProperties;
@@ -124,15 +125,18 @@ function Showreel() {
             sẽ được breakdown trong khóa
           </h2>
         </div>
-        <div className="vreel">
-          <div className="vreel-track">
-            {[...VREEL, ...VREEL].map((src, i) => (
-              <div className="vreel-card" key={i} aria-hidden={i >= VREEL.length || undefined}>
+        <Marquee
+          className="vreel"
+          trackClassName="vreel-track"
+          speed={30}
+          renderCopy={(c) =>
+            VREEL.map((src, i) => (
+              <div className="vreel-card" key={i} aria-hidden={c > 0 || undefined}>
                 <video src={src} autoPlay loop muted playsInline preload="auto" />
               </div>
-            ))}
-          </div>
-        </div>
+            ))
+          }
+        />
       </div>
     </section>
   );
@@ -309,10 +313,13 @@ function Feedback() {
           <span className="kicker center">Feedback</span>
           <h2 className="section-title">Học viên nói gì về khóa học của Dân?</h2>
         </div>
-        <div className="fb-grid">
-          <div className="fb-track">
-            {[...FEEDBACK, ...FEEDBACK].map((f, i) => (
-              <div className="fb-card" key={i} aria-hidden={i >= FEEDBACK.length || undefined}>
+        <Marquee
+          className="fb-grid"
+          trackClassName="fb-track"
+          speed={48}
+          renderCopy={(c) =>
+            FEEDBACK.map((f, i) => (
+              <div className="fb-card" key={i} aria-hidden={c > 0 || undefined}>
                 <Stars />
                 <div className="fb-head">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -324,9 +331,9 @@ function Feedback() {
                 </div>
                 <div className="fb-quote">{f.quote}</div>
               </div>
-            ))}
-          </div>
-        </div>
+            ))
+          }
+        />
       </div>
     </section>
   );

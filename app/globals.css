@@ -49,6 +49,10 @@
 
 html { scroll-behavior: smooth; }
 
+/* Ẩn thanh scrollbar nhưng vẫn cho phép scroll */
+html { scrollbar-width: none; -ms-overflow-style: none; } /* Firefox, IE/Edge cũ */
+html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0; height: 0; display: none; } /* Chrome, Safari, Edge */
+
 body {
   margin: 0;
   background: var(--bg);
@@ -433,11 +437,12 @@ h1, h2, h3 {
 .vreel-track {
   display: flex;
   width: max-content;
-  animation: vreel-marquee 42s linear infinite;
+  animation: mq-marquee var(--mq-dur, 42s) linear infinite;
   will-change: transform;
 }
 .vreel:hover .vreel-track { animation-play-state: paused; }
-@keyframes vreel-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* shift distance is measured at runtime (= width of one copy) and passed via --mq-shift */
+@keyframes mq-marquee { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--mq-shift, 50%))); } }
 @media (prefers-reduced-motion: reduce) { .vreel-track { animation: none; } }
 .vreel-card {
   flex: 0 0 auto;
@@ -932,15 +937,11 @@ html.anim .reveal.in { opacity: 1 !important; transform: none !important; }
 .fb-track {
   display: flex;
   width: max-content;
-  animation: fb-marquee 48s linear infinite;
+  animation: mq-marquee var(--mq-dur, 48s) linear infinite;
   will-change: transform;
 }
 /* hover vào vùng card thì dừng */
 .fb-grid:hover .fb-track { animation-play-state: paused; }
-@keyframes fb-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
 @media (prefers-reduced-motion: reduce) {
   .fb-track { animation: none; }
 }
@@ -1248,7 +1249,7 @@ html.anim .reveal.in { opacity: 1 !important; transform: none !important; }
 .cdetail .fb-grid{margin-top:48px;overflow:hidden;width:100vw;margin-left:calc(50% - 50vw);
   -webkit-mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 93%,transparent 100%);
           mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 93%,transparent 100%);}
-.cdetail .fb-track{display:flex;width:max-content;animation:fb-marquee 50s linear infinite;will-change:transform;}
+.cdetail .fb-track{display:flex;width:max-content;animation:mq-marquee var(--mq-dur, 50s) linear infinite;will-change:transform;}
 .cdetail .fb-grid:hover .fb-track{animation-play-state:paused;}
 @media(prefers-reduced-motion:reduce){
   .cdetail .fb-track{animation:none;}

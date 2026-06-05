@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FEEDBACK, FAQ, COMMS, LOGO, COMMUNITY_IMG } from "./data";
+import { Marquee } from "./Marquee";
 import type { CourseDetail as Course } from "./courseData";
 import {
   Stars,
@@ -191,10 +192,13 @@ function Feedback() {
           <h2 className="section-title">Học viên nói gì về khóa học của Dân?</h2>
         </div>
       </div>
-      <div className="fb-grid">
-        <div className="fb-track">
-          {[...FEEDBACK, ...FEEDBACK].map((f, i) => (
-            <div className="fb-card" key={i} aria-hidden={i >= FEEDBACK.length || undefined}>
+      <Marquee
+        className="fb-grid"
+        trackClassName="fb-track"
+        speed={48}
+        renderCopy={(c) =>
+          FEEDBACK.map((f, i) => (
+            <div className="fb-card" key={i} aria-hidden={c > 0 || undefined}>
               <Stars />
               <div className="fb-head">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -206,9 +210,9 @@ function Feedback() {
               </div>
               <div className="fb-quote">{f.quote}</div>
             </div>
-          ))}
-        </div>
-      </div>
+          ))
+        }
+      />
     </section>
   );
 }
