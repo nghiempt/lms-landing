@@ -69,7 +69,9 @@ function Header() {
         <a href="#community">Cộng đồng</a>
       </nav>
       <a className="btn btn-primary nav-cta" href="#pricing">
-        Tham gia<span className="arrow">→</span>
+        Tham gia <span className="arrow">
+                  <ArrowR />
+                </span>
       </a>
     </header>
   );
@@ -93,7 +95,9 @@ function Hero() {
       </p>
       <div className="cta-row" style={v({ "--rd": "270ms" })}>
         <a className="btn btn-primary" href="#pricing">
-          Tham gia khóa học<span className="arrow">→</span>
+          Tham gia khóa học <span className="arrow">
+                  <ArrowR />
+                </span>
         </a>
         <a className="btn btn-ghost" href="#showreel">
           Xem showreel

@@ -10,9 +10,27 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "VIDEO EDITOR — Khóa học Video Editor quốc tế",
-  description:
-    "Lộ trình cho Video Editor hướng tới client quốc tế & thu nhập $1000+. Khóa học đầu tiên tại Việt Nam tập trung vào style edit kiểu Apple & Devin Jatho — dạng video đang được nhiều khách hàng quốc tế trả giá cao.",
+  title: "Danmotion Video Editing Course",
+  description: "Lộ trình cho Video Editor hướng tới client quốc tế & thu nhập $1000+",
+  openGraph: {
+    title: "Danmotion Video Editing Course",
+    description: "Lộ trình cho Video Editor hướng tới client quốc tế & thu nhập $1000+",
+    images: [
+      {
+        url: "/thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Danmotion Video Editing Course",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Danmotion Video Editing Course",
+    description: "Lộ trình cho Video Editor hướng tới client quốc tế & thu nhập $1000+",
+    images: ["/thumbnail.png"],
+  },
 };
 
 export default function RootLayout({

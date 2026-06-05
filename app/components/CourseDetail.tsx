@@ -97,7 +97,9 @@ function Hero({ course }: { course: Course }) {
               <span className="cur">VNĐ</span>
             </div>
             <a className="btn btn-primary" href="#">
-              Tham gia khóa học <span className="arrow">→</span>
+              Tham gia khóa học <span className="arrow">
+                  <ArrowR />
+                </span>
             </a>
           </div>
         </div>
